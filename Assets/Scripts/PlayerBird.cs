@@ -8,7 +8,7 @@ public class PlayerBird : Bird
     protected override void Update()
     {
         m_flap = Input.GetMouseButtonDown(0);
-        m_glide = Input.GetMouseButton(0);
+        m_glide = m_flap || Input.GetMouseButton(0);
         base.Update();
     }
 }

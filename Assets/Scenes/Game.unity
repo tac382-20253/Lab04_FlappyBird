@@ -238,6 +238,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea289aab3ca37644bbbe9916032c48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_gravity: 5
+  m_flapBoost: 4
+  m_glideSpeed: 2
+  m_maxFallSpeed: 10
+  m_maxRiseSpeed: 5
+  m_yMax: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

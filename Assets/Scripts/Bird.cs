@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
-    public float m_gravity = 1.0f;
-    public float m_flapBoost = 3.0f;
+    public float m_gravity = 5.0f;
+    public float m_glideGravity = 3.0f;
+    public float m_flapBoost = 4.0f;
     public float m_glideSpeed = 2.0f;
     public float m_maxFallSpeed = 10.0f;
     public float m_maxRiseSpeed = 6.0f;
     public float m_yMax = 5.0f;
+    public GameObject m_deathEffect;
 
     Animator m_anim;
     protected bool m_flap = false;
@@ -27,17 +29,18 @@ public class Bird : MonoBehaviour
     protected virtual void Update()
     {
         Vector3 pos = transform.position;
-        m_ySpeed -= m_gravity * Time.deltaTime;
         if (m_flap)
         {
             m_ySpeed += m_flapBoost;
         }
         if (m_glide)
         {
+            m_ySpeed -= m_glideGravity * Time.deltaTime;
             m_ySpeed = Mathf.Max(m_ySpeed, -m_glideSpeed);
         }
         else
         {
+            m_ySpeed -= m_gravity * Time.deltaTime;
             m_ySpeed = Mathf.Max(m_ySpeed, -m_maxFallSpeed);
         }
         m_ySpeed = Mathf.Min(m_ySpeed, m_maxRiseSpeed);
@@ -54,5 +57,27 @@ public class Bird : MonoBehaviour
                 m_flap = false;
             }
         }
+    }
+
+    public void Die()
+    {
+        if (null != m_deathEffect)
+        {
+            GameObject obj = Instantiate(m_deathEffect);
+            obj.transform.position = transform.position;
+        }
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("OnCollisionEnter2D " + collision.gameObject.name);
+        Die();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("OnTriggerEnter2D " + collision.gameObject.name);
+        Die();
     }
 }

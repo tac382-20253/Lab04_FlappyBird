@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     Vector3 m_lastPos;
     Vector3 m_lastCamPos;
+    PlayerBird m_player;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,9 @@ public class GameManager : MonoBehaviour
         obj.transform.position = pos;
         m_lastPos = pos;
         m_lastCamPos = Camera.main.transform.position;
+
+        // grab the player for future reference
+        m_player = FindObjectOfType<PlayerBird>();
     }
 
     // Update is called once per frame
@@ -49,5 +54,18 @@ public class GameManager : MonoBehaviour
             obj.transform.position = m_lastPos;
             m_lastCamPos.x += m_horizSpacing;
         }
+
+        if (null == m_player)
+        {   // Player Died
+            StartCoroutine(GameOver());
+        }
+    }
+
+    IEnumerator GameOver()
+    {
+        // wait 3 seconds
+        yield return new WaitForSecondsRealtime(3.0f);
+        // and reload the scene
+        SceneManager.LoadScene(0);
     }
 }

@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463150646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.65, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 123999769}
@@ -378,6 +378,7 @@ MonoBehaviour:
   m_pipe: {fileID: 307146055809160628, guid: 18f78619e773c5a469a5eea7b083d9f1, type: 3}
   m_horizSpacing: 6
   m_vertSpacing: 4
+  m_maxY: 4
 --- !u!4 &790544941
 Transform:
   m_ObjectHideFlags: 0

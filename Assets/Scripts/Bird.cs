@@ -12,6 +12,7 @@ public class Bird : MonoBehaviour
     public float m_maxRiseSpeed = 6.0f;
     public float m_yMax = 5.0f;
     public GameObject m_deathEffect;
+    public GameObject m_flapSound;
 
     Animator m_anim;
     protected bool m_flap = false;
@@ -32,6 +33,11 @@ public class Bird : MonoBehaviour
         if (m_flap)
         {
             m_ySpeed += m_flapBoost;
+            if (null != m_flapSound)
+            {
+                GameObject flapSound = Instantiate(m_flapSound);
+                flapSound.transform.position = pos;
+            }
         }
         if (m_glide)
         {

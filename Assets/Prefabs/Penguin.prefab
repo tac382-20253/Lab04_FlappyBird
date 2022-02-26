@@ -117,11 +117,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gravity: 5
+  m_glideGravity: 3
   m_flapBoost: 4
   m_glideSpeed: 2
   m_maxFallSpeed: 10
   m_maxRiseSpeed: 5
   m_yMax: 5
+  m_deathEffect: {fileID: 0}
+  m_flapSound: {fileID: 8165799012853752298, guid: 92adee729400d9e46a6e6f47489d91d0, type: 3}
+  m_forwardSpeed: 1
 --- !u!58 &8825492968380082381
 CircleCollider2D:
   m_ObjectHideFlags: 0

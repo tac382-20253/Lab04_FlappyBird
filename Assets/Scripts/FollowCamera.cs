@@ -23,9 +23,12 @@ public class FollowCamera : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 pos = m_target.position + m_offset;
-        pos.y = m_original.y;
-        pos.z = m_original.z;
-        transform.position = pos;
+        if (null != m_target)
+        {
+            Vector3 pos = m_target.position + m_offset;
+            pos.y = m_original.y;
+            pos.z = m_original.z;
+            transform.position = pos;
+        }
     }
 }

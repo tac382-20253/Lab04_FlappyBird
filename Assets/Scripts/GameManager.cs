@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     public float m_horizSpacing = 6.0f;
     public float m_vertSpacing = 4.0f;
     public float m_maxY = 4.0f;
+    public GameObject m_pauseMenu;
 
     Vector3 m_lastPos;
     Vector3 m_lastCamPos;
     PlayerBird m_player;
+    bool m_isPaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
 
         // grab the player for future reference
         m_player = FindObjectOfType<PlayerBird>();
+
+        SetPause(false);
     }
 
     // Update is called once per frame
@@ -59,6 +63,12 @@ public class GameManager : MonoBehaviour
         {   // Player Died
             StartCoroutine(GameOver());
         }
+
+        // keys
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {   // this doubles as the option key in the android navigation bar
+            SetPause(!m_isPaused);
+        }
     }
 
     IEnumerator GameOver()
@@ -67,5 +77,24 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(3.0f);
         // and reload the scene
         SceneManager.LoadScene(0);
+    }
+
+    public void SetPause(bool setPause)
+    {
+        if (setPause)
+        {
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
+        m_pauseMenu.SetActive(setPause);
+        m_isPaused = setPause;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

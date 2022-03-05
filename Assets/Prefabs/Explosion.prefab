@@ -100,8 +100,8 @@ MonoBehaviour:
   m_randomRotate: 1
   m_minSpeed: 0.8
   m_maxSpeed: 1.2
-  m_minScale: 0.8
-  m_maxScale: 1.2
+  m_minScale: 1.6
+  m_maxScale: 2.4
   m_minVolume: 0.8
   m_maxVolume: 1.2
   m_minPitch: 0.8

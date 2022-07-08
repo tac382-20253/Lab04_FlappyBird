@@ -13,9 +13,6 @@ public class Bird : MonoBehaviour
     public float m_yMax = 5.0f;
     public GameObject m_deathEffect;
     // TODO Add m_flapSound
-#if true
-    public AudioSource m_flapSound;
-#endif
 
     Animator m_anim;
     protected bool m_flap = false;
@@ -37,12 +34,6 @@ public class Bird : MonoBehaviour
         {
             m_ySpeed += m_flapBoost;
             {   //TODO play the flap sound
-#if true
-                if (null != m_flapSound)
-                {
-                    m_flapSound.Play();
-                }
-#endif
             }
         }
         if (m_glide)
@@ -82,11 +73,4 @@ public class Bird : MonoBehaviour
     }
 
     // TODO Create Collision Function
-#if true
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("OnTriggerEnter2D " + collision.gameObject.name);
-        Die();
-    }
-#endif
 }

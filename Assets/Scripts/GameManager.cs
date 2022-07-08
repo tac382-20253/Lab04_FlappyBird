@@ -35,19 +35,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         {   // TODO make pipes
-#if true
-            Vector3 camPos = Camera.main.transform.position;
-            while (camPos.x - m_lastCamPos.x >= m_horizSpacing)
-            {
-                GameObject obj = Instantiate(m_pipe);
-                Vector3 pos = obj.transform.position;
-                m_lastPos.y += Random.Range(-m_vertSpacing, m_vertSpacing);
-                m_lastPos.y = Mathf.Clamp(m_lastPos.y, -m_maxY, m_maxY);
-                obj.transform.position = m_lastPos;
-                m_lastPos.x += m_horizSpacing;
-                m_lastCamPos.x += m_horizSpacing;
-            }
-#endif
         }
 
         if (null == m_player)

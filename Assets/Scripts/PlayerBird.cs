@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class PlayerBird : Bird
 {
-    public float m_forwardSpeed = 1.0f;
+    public float m_forwardSpeed = 3.0f;
 
     // Update is called once per frame
     protected override void Update()
     {
         m_flap = Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
         m_glide = m_flap || Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space);
-        Vector3 pos = transform.position;
-        pos.x += m_forwardSpeed * Time.deltaTime;
-        transform.position = pos;
+
+        {   // TODO Move the player bird forward at a rate of m_forwardSpeed (units per second)
+#if true
+            Vector3 pos = transform.position;
+            pos.x += m_forwardSpeed * Time.deltaTime;
+            transform.position = pos;
+#endif
+        }
+
         base.Update();
     }
 }

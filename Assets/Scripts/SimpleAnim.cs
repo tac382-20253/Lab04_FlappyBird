@@ -31,10 +31,7 @@ public class SimpleAnim : MonoBehaviour
         {
             transform.localEulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
         }
-        if (null != m_audio)
-        {
-            m_audio.volume = Random.Range(m_minVolume, m_maxVolume);
-            m_audio.pitch = Random.Range(m_minPitch, m_maxPitch);
+        {   // TODO randomize the volume and pitch of m_audio if there is one
         }
         StartCoroutine(DeleteWhenDone());
     }
@@ -46,10 +43,7 @@ public class SimpleAnim : MonoBehaviour
             var state = m_anim.GetCurrentAnimatorStateInfo(0);
             yield return new WaitForSeconds(state.length * state.speed);
         }
-        if (null != m_audio)
-        {
-            while (m_audio.isPlaying)
-                yield return null;
+        {   // TODO yield until the m_audio is finished playing
         }
         Destroy(gameObject);
     }

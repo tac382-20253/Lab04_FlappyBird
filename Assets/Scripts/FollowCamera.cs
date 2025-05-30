@@ -14,7 +14,7 @@ public class FollowCamera : MonoBehaviour
     {
         if (null == m_target)
         {
-            m_target = FindObjectOfType<PlayerBird>().transform;
+            m_target = FindFirstObjectByType<PlayerBird>().transform;
         }
         m_original = transform.position;
         m_offset = m_original - m_target.position;

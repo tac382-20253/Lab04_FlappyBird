@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         m_lastPos.x += m_firstPipeAt;       // the first pipe is this far forward from the starting position
 
         // grab the player for future reference
-        m_player = FindObjectOfType<PlayerBird>();
+        m_player = FindFirstObjectByType<PlayerBird>();
 
         SetPause(false);
     }
